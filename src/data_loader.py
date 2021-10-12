@@ -34,9 +34,9 @@ class MyDataset(Dataset):
         self.img_size = img_size
         textures = np.ones((1, faces.shape[0], texture_size, texture_size, texture_size, 3), 'float32')
         self.textures = torch.from_numpy(textures).cuda(device=0)
-        self.faces_var = torch.from_numpy(faces[None, :, :]).cuda(device=0)
-        self.vertices_var = torch.from_numpy(vertices[None, :, :]).cuda(device=0)
-        self.mask_renderer = nmr.NeuralRenderer(img_size=self.img_size).cuda()
+        self.faces_var = faces[None, :, :]
+        self.vertices_var = vertices[None, :, :]
+        self.mask_renderer = nmr.NeuralRenderer(img_size=img_size).cuda()
         self.mask_dir = mask_dir
         self.ret_mask = ret_mask
         # print(self.files)
@@ -83,6 +83,7 @@ class MyDataset(Dataset):
             mask = torch.from_numpy(mask.astype('float32')).cuda()
             # print(mask.size())
             # print(torch.max(mask))
+            total_img = (1 - mask) * img + (255 * imgs_pred) * mask
             return index, total_img.squeeze(0) , imgs_pred.squeeze(0), mask
         return index, total_img.squeeze(0) , imgs_pred.squeeze(0)
     

@@ -40,9 +40,9 @@ parser.add_argument("--t", type=float, default=0.0001)
 
 parser.add_argument("--obj", type=str, default='audi_et_te.obj')
 parser.add_argument("--faces", type=str, default='./all_faces.txt')
-parser.add_argument("--datapath", type=str)
-parser.add_argument("--content", type=str)
-parser.add_argument("--canny", type=str)
+parser.add_argument("--datapath", type=str, default=r'F:\PythonPro\DualAttentionAttack\data')
+parser.add_argument("--content", type=str, default='./textures/smile.npy')
+parser.add_argument("--canny", type=str, default='./textures/smile_canny.npy')
 
 args = parser.parse_args()
 
@@ -145,7 +145,7 @@ def loss_midu(x1):
 texture_param = np.ones((1, faces.shape[0], texture_size, texture_size, texture_size, 3), 'float32') * -0.9# test 0
 texture_param = torch.autograd.Variable(torch.from_numpy(texture_param).cuda(device=0), requires_grad=True)
 
-texture_origin = torch.from_numpy(textures[None, :, :, :, :, :]).cuda(device=0)
+texture_origin = textures[None, :, :, :, :, :].cuda(device=0)
 
 texture_mask = np.zeros((faces.shape[0], texture_size, texture_size, texture_size, 3), 'int8')
 with open(args.faces, 'r') as f:

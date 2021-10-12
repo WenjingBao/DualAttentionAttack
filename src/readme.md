@@ -1,3 +1,15 @@
+## Attention!!!
+
+原始的代码是没办法直接运行的，因此我进行了修改。运行前，请先按照[这里](https://github.com/winterwindwang/neural_renderer.git)将nerual_render包安装好。然后下载完数据集后即可直接运行。
+
+### 运行环境
+
+RTX3070
+
+torch 1.8.0
+
+---
+
 # Physical Attack
 
 ### 运行前依赖
