@@ -38,11 +38,11 @@ parser.add_argument("--d1", type=float, default=0.9)
 parser.add_argument("--d2", type=float, default=0.1)
 parser.add_argument("--t", type=float, default=0.0001)
 
-parser.add_argument("--obj", type=str, default='audi_et_te.obj')
-parser.add_argument("--faces", type=str, default='./all_faces.txt')
-parser.add_argument("--datapath", type=str, default=r'F:\PythonPro\DualAttentionAttack\data')
-parser.add_argument("--content", type=str, default='./textures/smile.npy')
-parser.add_argument("--canny", type=str, default='./textures/smile_canny.npy')
+parser.add_argument("--obj", type=str, default='src/audi_et_te.obj')
+parser.add_argument("--faces", type=str, default='src/all_faces.txt')
+parser.add_argument("--datapath", type=str, default='src/data')
+parser.add_argument("--content", type=str, default='src/textures/smile.npy')
+parser.add_argument("--canny", type=str, default='src/textures/smile_canny.npy')
 
 args = parser.parse_args()
 
